@@ -1,8 +1,5 @@
 from dimuon import find_pairs
-
-def test_find_pairs():
-    particles = None
-    pairs = find_pairs(particles)
+from nose.tools import *
 
 def test_no_particles():
     particles = []
@@ -10,7 +7,12 @@ def test_no_particles():
     assert len(pairs) == 0
 
 def test_one_particle():
-    particles = []
+    particles = [None]
     pairs = find_pairs(particles)
     assert len(pairs) == 0
     
+def test_two_particles():
+    particles = [None,None]
+    pairs = find_pairs(particles)
+    assert_equal(len(pairs), 1)
+
